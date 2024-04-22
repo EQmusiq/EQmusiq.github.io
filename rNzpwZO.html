@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<!-- saved from url=(0060)https://cdpn.io/jhancock532/fullpage/rNzpwZO?anon=true&view= -->
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+
+    @font-face {
+      font-family: "Equinox";
+      src: url("home_resources/Assets/fonts/EquinoxBold.otf");
+    }
+
+    body {
+      margin: 0;
+      font-family: "Cinzel", serif;
+      overflow: hidden;
+      color: white;
+    }
+
+    a {
+      color: #ccc;
+    }
+
+    footer {
+      position: absolute;
+      font-size: 22px;
+      bottom: 0;
+      left: 0;
+      transform: translate(calc(50vw - 50%), -50%);
+      color: black;
+      font-family: "Equinox";
+      padding-bottom: 10px;
+      text-align: center;
+    }
+
+    footer a {
+      color: black;
+      font-family: "Equinox";
+    }
+
+    #main {
+      margin: 80px 80px 0 80px;
+      display: flex;
+      gap: 25px;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 75px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .links {
+      display: flex;
+      gap: 25px;
+      padding-left: 5%;
+      padding-right: 10%;
+      width: 100%;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .hero {
+      text-align: center;
+      display: grid;
+      gap: 20px;
+      width: 20%;
+    }
+
+
+
+    canvas {
+      position: absolute;
+      bottom: 0;
+      pointer-events: none;
+      width: 100%;
+      height: 50vh;
+      filter: invert(1);
+    }
+
+    @media only screen and (max-width: 875px) {
+      #main {
+        margin: 20px 20px 0 20px;
+        display: grid;
+        padding-top: 0;
+        margin-top: 0;
+      }
+
+      .hero {
+        width: 100%;
+        text-align: left;
+      }
+
+      canvas {
+        height: 25vh;
+      }
+
+      footer {
+        padding-bottom: 0px;
+        bottom: -10px;
+      }
+
+      .links {
+        padding: 0;
+        width: 90vw;
+      }
+    }
+
+    label {
+      font-size: 22px;
+      font-weight: bold;
+      display: block;
+    }
+
+    input {
+      display: block;
+      margin-bottom: 10px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    @media only screen and (max-width: 470px) {
+
+      .links {
+        display: grid;
+      }
+    }
+  </style>
+
+  <script>
+    window.console = window.console || function (t) { };
+  </script>
+</head>
+
+<body translate="no">
+  <!-- Quick start shader template: https://codepen.io/pen/?template=ZEyrWNe -->
+
+  <div id="main">
+    <div class="hero">
+      <h1 style="font-family: 'Equinox'; font-size: 5rem">EQ</h1>
+      <p>
+        <a href="https://github.com/EQmusiq/EQmusiq.github.io/blob/main/LICENSE">MIT</a>
+        © 2024 EQ Musiq
+        <br />
+        All rights reserved.
+        <br>
+        <a href="terms.html" target="_blank">Terms</a> and <a href="policy.html" target="_blank">Privacy</a>
+      </p>
+    </div>
+    <div class="links">
+      <div>
+        <ul style="list-style: none; display: grid; gap: 10px">
+          <li>
+            <h3 style="margin-bottom: 5px">Quick Links</h3>
+          </li>
+          <li><a href="https://eqmusiq.github.io/" target="_blank">Home</a></li>
+          <li><a href="index.html#About" target="_blank">About</a></li>
+          <li><a href="index.html#Members" target="_blank">Members</a></li>
+          <li><a href="index.html#Contact" target="_blank">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <ul style="list-style: none; display: grid; gap: 10px">
+          <li>
+            <h3 style="margin-bottom: 5px">Connect with Us</h3>
+          </li>
+          <li><a href="https://www.instagram.com/eqmusiq/" target="_blank">Instagram</a></li>
+          <li><a href="javascript:alert('Coming soon!')" target="_blank">Spotify</a></li>
+          <li><a href="javascript:alert('Coming soon!')" target="_blank">Bandlab</a></li>
+        </ul>
+      </div>
+      <div>
+        <ul style="list-style: none; display: grid; gap: 10px">
+          <li>
+            <h3 style="margin-bottom: 5px">Get in Touch</h3>
+          </li>
+          <li><a href="index.html#Contact" target="_blank">Collaboration</a></li>
+          <li><a href="mailto:eqmusiq9@gmail.com" target="_blank">Email</a></li>
+          <li><a href="javascript:alert('Coming soon!')" target="_blank">Partnership</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="canvas" width="559" height="150"></canvas>
+  <footer>
+    Designed And mAintAined by
+    <a href="https://navaneet239.github.io" target="_blank">NAvAneet .J</a>
+  </footer>
+  <script id="vertexShader" type="x-shader/x-vertex">
+      attribute vec4 position;
+
+      void main() {
+        gl_Position = vec4( position );
+      }
+    </script>
+
+  <script id="fragmentShader" type="x-shader/x-fragment">
+      #ifdef GL_FRAGMENT_PRECISION_HIGH
+      precision highp float;
+      #else
+      precision mediump float;
+      #endif
+
+      uniform vec2 u_resolution;
+      uniform float u_time;
+      uniform vec2 u_mouse;
+
+
+      //Taken from Book of Shaders
+      //https://thebookofshaders.com/edit.php#11/2d-gnoise.frag
+      vec2 random2(vec2 st){
+        st = vec2( dot(st,vec2(127.1,311.7)),
+                   dot(st,vec2(269.5,183.3)) );
+        return -1.0 + 2.0*fract(sin(st)*43758.5453123);
+      }
+
+      // Gradient Noise by Inigo Quilez - iq/2013
+      // https://www.shadertoy.com/view/XdXGW8
+      float noise(vec2 st) {
+          vec2 i = floor(st);
+          vec2 f = fract(st);
+
+          vec2 u = f*f*(3.0-2.0*f);
+
+          return mix( mix( dot( random2(i + vec2(0.0,0.0) ), f - vec2(0.0,0.0) ),
+                           dot( random2(i + vec2(1.0,0.0) ), f - vec2(1.0,0.0) ), u.x),
+                      mix( dot( random2(i + vec2(0.0,1.0) ), f - vec2(0.0,1.0) ),
+                           dot( random2(i + vec2(1.0,1.0) ), f - vec2(1.0,1.0) ), u.x), u.y);
+      }
+
+      void main() {
+        vec2 uv = gl_FragCoord.xy / u_resolution;
+
+        float waveOffset = 0.3;
+        float waveCenter = 1.;
+        float waveFocus = 0.25;
+        float waveSpeed = 2.; //Lower faster.
+
+        float wMin = waveCenter - waveFocus;
+        float wMax = waveCenter + waveFocus;
+
+        //Smoothly extend on the x axis without stretching the noise
+        uv.x *= u_resolution.x/u_resolution.y;
+        uv.x += 1787.74328; //random starting seed
+        uv.y *= 2.;
+
+        float rn = noise( vec2(uv.x, u_time / waveSpeed));
+        float ry = uv.y - rn;
+        float r = smoothstep(wMin, wMax, ry);
+
+        float bn = noise( vec2(uv.x, u_time / waveSpeed - waveOffset));
+        float by = uv.y - bn;
+        float b = smoothstep(wMin, wMax, by);
+
+        float gn = noise( vec2(uv.x, u_time / waveSpeed + waveOffset));
+        float gy = uv.y - gn;
+        float g = smoothstep(wMin, wMax, gy);
+
+        //float a = (r + g + b) / 3.0;
+
+        gl_FragColor = vec4(r, b, g, 1.0);
+      }
+    </script>
+  <script src="./twgl.min.js"></script>
+  <script id="rendered-js">
+    // Following the twgl tiny tutorial, https://twgljs.org/
+    // Code adapted from https://github.com/greggman/twgl.js/blob/master/examples/tiny.html
+
+    const gl = document.getElementById("canvas").getContext("webgl");
+    const programInfo = twgl.createProgramInfo(gl, [
+      "vertexShader",
+      "fragmentShader",
+    ]);
+
+    const arrays = {
+      position: [-1, -1, 0, 1, -1, 0, -1, 1, 0, -1, 1, 0, 1, -1, 0, 1, 1, 0],
+    };
+
+    const bufferInfo = twgl.createBufferInfoFromArrays(gl, arrays);
+
+    let mouseX = 0,
+      mouseY = 0;
+
+    document.getElementById("canvas").addEventListener("mousemove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function render(time) {
+      //Paints only 25% pixels in the screen space,
+      //Slightly lower resolution but much better performance!
+      //See also: the zoom feature of https://glslsandbox.com/
+
+      twgl.resizeCanvasToDisplaySize(gl.canvas, 0.5);
+
+      //Paints 4x the number of pixels.
+      //Very computationally expensive in full screen on desktop devices
+      //twgl.resizeCanvasToDisplaySize(gl.canvas, 1.0);
+
+      gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
+
+      const uniforms = {
+        u_time: time * 0.002,
+        u_resolution: [gl.canvas.width, gl.canvas.height],
+        u_mouse: [mouseX, mouseY],
+      };
+
+      gl.useProgram(programInfo.program);
+      twgl.setBuffersAndAttributes(gl, programInfo, bufferInfo);
+      twgl.setUniforms(programInfo, uniforms);
+      twgl.drawBufferInfo(gl, bufferInfo);
+
+      requestAnimationFrame(render);
+    }
+    requestAnimationFrame(render);
+    //# sourceURL=pen.js
+  </script>
+</body>
+
+</html>
