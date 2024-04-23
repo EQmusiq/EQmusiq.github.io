@@ -463,6 +463,12 @@ input[type=text], select, textarea {
   background-repeat: no-repeat;
 }
 
+#agnelPic{
+  background: url('https://lh3.googleusercontent.com/u/0/drive-viewer/AKGpihY3VpsVw6LBrTbK8S7T5kLDWq1_E_CguH64ve9PlXaLjAwe0NPjDZveGW4R4HunGFU8-7MgR9v7S9CDQ6P_GHTJTOzuBM_Jodk=w1920-h870-rw-v1');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .container h1{ font-family: 'Equinox'; font-size: 2.5rem; margin-bottom: 10px;}
 
 .Contact{
